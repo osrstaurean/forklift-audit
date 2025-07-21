@@ -42,7 +42,7 @@ init_db()
 @app.route('/')
 def index():
     return render_template('form.html', today=datetime.today().strftime('%Y-%m-%d'))
-
+@app.route('/submit')
 def submit():
     data = {
         'date': request.form.get('date'),
