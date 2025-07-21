@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Forklift Audit</title>
+</head>
+<body>
+  <h1>Daily Forklift Audit</h1>
+  <form action="/submit" method="post">
+    <label>Date: <input type="date" name="date" value="{{ today }}" required></label><br>
+    <label>Operator Name: <input type="text" name="operator" required></label><br>
+    <label>Forklift ID: <input type="text" name="forklift_id" required></label><br>
+    <fieldset>
+      <legend>Checklist (check if OK):</legend>
+      <label><input type="checkbox" name="tires"> Tires</label><br>
+      <label><input type="checkbox" name="brakes"> Brakes</label><br>
+      <label><input type="checkbox" name="lights"> Lights</label><br>
+      <label><input type="checkbox" name="horn"> Horn</label><br>
+      <label><input type="checkbox" name="forks"> Forks</label><br>
+      <label><input type="checkbox" name="fluid"> Fluid Levels</label><br>
+      <label><input type="checkbox" name="seatbelt"> Seatbelt</label><br>
+    </fieldset>
+    <label>Comments:<br>
+      <textarea name="comments" rows="4" cols="50"></textarea>
+    </label><br>
+    <button type="submit">Submit Audit</button>
+  </form>
+
+  <h2>Scan QR to Access This Form</h2>
+  <img src="/qr.png" alt="QR code to forklift audit form">
+  <p>Or visit <a href="/">this link</a>.</p>
+</body>
+</html>

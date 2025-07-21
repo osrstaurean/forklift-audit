@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>All Forklift Audits</title>
+</head>
+<body>
+  <h1>Past Forklift Audits</h1>
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Date</th><th>Operator</th><th>Forklift ID</th>
+      <th>Tires</th><th>Brakes</th><th>Lights</th><th>Horn</th>
+      <th>Forks</th><th>Fluid</th><th>Seatbelt</th>
+      <th>Comments</th><th>Submitted At (UTC)</th>
+    </tr>
+    {% for row in audits %}
+    <tr>
+      {% for cell in row %}<td>{{ cell }}</td>{% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+  <p><a href="/">Back to form</a></p>
+</body>
+</html>
