@@ -1,3 +1,12 @@
+##############################################################################
+"""
+CREATED BY ALEXANDER P CRAWFORD
+FOR USE BY AWL AUTOMATION, ALEXANDER CRAWFORD & COMPANY ENTITIES
+LICENSE:
+"""
+##############################################################################
+
+
 import io
 
 from flask import Flask, render_template, request, redirect, send_file, url_for
@@ -42,7 +51,7 @@ init_db()
 @app.route('/')
 def index():
     return render_template('form.html', today=datetime.today().strftime('%Y-%m-%d'))
-@app.route('/submit')
+@app.route('/submit', methods=['POST'])
 def submit():
     data = {
         'date': request.form.get('date'),
@@ -104,18 +113,29 @@ def audits():
 
 @app.route('/qr.png')
 def qr_png():
-    # Generate QR code pointing to the form
-    target = request.url_root.rstrip('/') + url_for('index')
-    img = qrcode.make(target)
+    # 1️⃣ Option A: Hard‑code your ngrok URL:
+    # public_url = 'https://81caa7a66b2e.ngrok-free.app'
+    #
+    # 2️⃣ Option B: Read it from PUBLIC_URL env var (recommended):
+    #public_url = os.getenv('PUBLIC_URL', request.url_root.rstrip('/'))
+    public_url = 'https://e0b7ba8fef2d.ngrok-free.app'
+
+    # Build the link to your form
+    target_url = f"{public_url}{url_for('index')}"
+
+    # Generate the QR code
+    img = qrcode.make(target_url)
     buf = io.BytesIO()
     img.save(buf, format='PNG')
     buf.seek(0)
+
     return send_file(buf, mimetype='image/png')
 
+
 if __name__ == '__main__':
-    #init_db()
-    app.run(host='172.29.192.1', port=5000)
-    print('completed task')
+    init_db()
+    # **this guard must be exactly this**
+    app.run(host='0.0.0.0', port=5000)
 
 
 '''date, operator,
