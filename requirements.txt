@@ -1,2 +1,5 @@
 Flask>=2.0
+click>=8.0
+requests>=2.0       # if you’re using the ngrok‐API lookup
 qrcode[pil]>=7.3
+pyngrok>=5.2

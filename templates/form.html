@@ -3,6 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Daily Forklift Audit</title>
+  <style>
+    /* Increase overall text size */
+    body, label, input[type="date"], input[type="text"], textarea, button {
+      font-size: 1.25rem;      /* ~20px */
+    }
+
+    /* Make checkboxes bigger by scaling them */
+    input[type="checkbox"] {
+      /* transform-scale is the easiest cross-browser way */
+      transform: scale(1.5);    /* 1.5× normal size */
+      -webkit-transform: scale(1.5);
+      /* adjust alignment slightly */
+      vertical-align: middle;
+      margin-right: 0.5rem;
+    }
+
+    /* Tweak textareas/inputs padding so they look balanced */
+    input[type="date"], input[type="text"], textarea {
+      padding: 0.5rem;
+    }
+
+    /* Enlarge the submit button */
+    button {
+      padding: 0.6rem 1.2rem;
+    }
+  </style>
+  <p><a href="/audits">View all Audits</a></p>
 </head>
 <body>
   <h1>Daily Forklift Audit</h1>
