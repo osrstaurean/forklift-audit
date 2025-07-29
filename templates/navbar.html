@@ -1,0 +1,36 @@
+<div class="topbar">
+  <div class="logo">AWL Tools</div>
+
+  <!-- Hamburger Menu for Mobile -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+  <label for="nav-toggle" class="nav-toggle-label">
+    ☰
+  </label>
+
+  <nav class="nav-links">
+    <a href="{{ url_for('index') }}">Home</a>
+
+    <div class="dropdown">
+      <button class="dropbtn">Tools ▾</button>
+      <div class="matrix-background"></div> <!-- Matrix background effect -->
+      <div class="dropdown-content">
+        <a href="{{ url_for('form') }}">Forklift Audit Form</a>
+        <a href="{{ url_for('noninventory') }}">Non-Inventory Items</a>
+        <a href="{{ url_for('taskmanager') }}">Task Manager</a>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <button class="dropbtn">Resources ▾</button>
+      <div class="matrix-background"></div> <!-- Matrix background effect -->
+      <div class="dropdown-content">
+        <a href="{{ url_for('documents') }}">Documents</a>
+        <a href="{{ url_for('knowledge') }}">Knowledge Database</a>
+        <a href="{{ url_for('shipments') }}">US Shipment Manager</a>
+      </div>
+    </div>
+
+
+    <a href="{{ url_for('about') }}">About</a>
+  </nav>
+</div>

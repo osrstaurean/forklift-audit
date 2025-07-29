@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Documents | AWL Tools{% endblock %}
+
+{% block content %}
+<h1>Live Document Viewer</h1>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="doc-container">
+
+  <div class="doc-controls">
+    <label for="category-select">Select Category:</label>
+    <select id="category-select">
+      <option disabled selected>-- Choose a category --</option>
+    </select>
+
+    <ul id="doc-list"></ul>
+  </div>
+
+  <div class="doc-viewer">
+    <iframe id="doc-frame" width="100%" height="600px" frameborder="0">
+      Your browser does not support iframes.
+    </iframe>
+  </div>
+
+</div>
+
+<script>
+  fetch("/api/documents")
+    .then(res => res.json())
+    .then(data => {
+      const categorySelect = document.getElementById("category-select");
+      const docList = document.getElementById("doc-list");
+
+      // Fill dropdown with categories
+      for (const category in data) {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        categorySelect.appendChild(option);
+      }
+
+      // When category changes, show files
+      categorySelect.addEventListener("change", () => {
+        const selected = categorySelect.value;
+        const files = data[selected];
+        docList.innerHTML = "";
+
+        files.forEach(doc => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = "#";
+          a.textContent = doc.name;
+          a.onclick = e => {
+            e.preventDefault();
+            document.getElementById("doc-frame").src = doc.url;
+          };
+          li.appendChild(a);
+          docList.appendChild(li);
+        });
+      });
+    });
+</script>
+{% endblock %}

@@ -29,9 +29,74 @@
       padding: 0.6rem 1.2rem;
     }
   </style>
+  <link rel="stylesheet" href="styles.css"> <!-- Your CSS for navbar -->
+
   <p><a href="/audits">View all Audits</a></p>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .topbar {
+      background-color: #333;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .topbar a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .topbar a:hover {
+      background-color: #575757;
+    }
+
+    .topbar .nav-links {
+      display: flex;
+    }
+
+    .logo {
+      font-size: 20px;
+      color: white;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
+      .topbar .nav-links {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .topbar a {
+        text-align: center;
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="topbar">
+    <div class="logo">MySite</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <div style="padding: 20px;">
+    <h1>AWL Forklift Audit Form</h1>
+    <p>Daily Forklift Audit Form</p>
+  </div>
+
   <h1>Daily Forklift Audit</h1>
   <form action="/submit" method="post">
     <label>Date: <input type="date" name="date" value="{{ today }}" required></label><br>
@@ -41,7 +106,7 @@
     <label>Forklift ID: <input type="text" name="forklift_id" required></label><br>
     <fieldset>
       <legend>Key on Checks (check if OK):</legend>
-      <label><input type="checkbox" name="hourMeter"> Hour Meter</label><br>
+      <label><input type="text" name="hourMeter"> Hour Meter</label><br>
       <label><input type="checkbox" name="brakes"> Brakes</label><br>
       <label><input type="checkbox" name="lights"> Lights</label><br>
       <label><input type="checkbox" name="horn"> Horn</label><br>
